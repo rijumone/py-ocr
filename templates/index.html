@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<body>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+		<title>py-flask-ocr</title>
+	</head>
+	<div class="container">
+		<h1><code>py-flask-ocr</code></h1>
+		<div class="row">
+			<form method="POST" enctype="multipart/form-data">
+				{{ form.hidden_tag() }}
+				{{ form.photo }}
+				{% for error in form.photo.errors %}
+				<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+				{{ form.submit }}
+			</form>
+		</div>
+		{% if file_url %}
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-3">
+				 <div class="form-group">
+				    <label for="">OCRed text</label>
+				    <textarea class="form-control" rows="25" disabled="">{{ salvaged_text }}</textarea>
+				  </div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-9">
+				<img style="width: 900px" src="{{ file_url }}" />
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</body>
