@@ -52,6 +52,6 @@ def upload_file():
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
-        port='5000',
+        port='7001',
         debug=True if os.getenv('FLASK_PYOCR_DEBUG') == 'true' else False,
         )
