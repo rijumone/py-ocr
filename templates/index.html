@@ -9,12 +9,14 @@
 		<h1><code>py-flask-ocr</code></h1>
 		<div class="row">
 			<form method="POST" enctype="multipart/form-data">
-				{{ form.hidden_tag() }}
-				{{ form.photo }}
-				{% for error in form.photo.errors %}
-				<span style="color: red;">{{ error }}</span>
-				{% endfor %}
-				{{ form.submit }}
+				<div class="form-group">
+					{{ form.hidden_tag() }}
+					{{ form.photo(class_="form-control") }}
+					{% for error in form.photo.errors %}
+					<span style="color: red;">{{ error }}</span>
+					{% endfor %}
+					{{ form.submit(class_="form-control")  }}
+				</div>
 			</form>
 		</div>
 		{% if file_url %}
