@@ -15,6 +15,7 @@ pip install -r requirements.txt
 ## Usage
 ```bash
 export FLASK_PYOCR_SECRET_KEY='super-secret-key'
+export FLASK_PYOCR_DEBUG='false'
 python server.py
 ```
 

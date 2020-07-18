@@ -13,6 +13,7 @@ ExecStart=/bin/bash -c 'cd /home/pi/Kitchen/py-ocr;source env/bin/activate;pytho
 WantedBy=multi-user.target
 
 # /etc/default/pyocrd
-FLASK_PYOCR_SECRET_KEY="'bbkbaukh4324gjkgj3g21'"
+FLASK_PYOCR_SECRET_KEY="bbkbaukh4324gjkgj3g21"
+FLASK_PYOCR_DEBUG="false"
 
 # journalctl -u py_ocr -e -f
