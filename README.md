@@ -20,4 +20,4 @@ python server.py
 ```
 
 ## Demo
-[http://riju.onthewifi.com:5000](http://riju.onthewifi.com:5000)
+[http://riju.onthewifi.com:7001](http://riju.onthewifi.com:7001)
