@@ -12,7 +12,7 @@ import pytesseract
 import logging
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'bbkbaukh4324gjkgj3g21'
+app.config['SECRET_KEY'] = os.getenv('FLASK_PYOCR_SECRET_KEY')
 app.config['UPLOADED_PHOTOS_DEST'] = os.path.join(os.getcwd(), 'uploads')
 
 photos = UploadSet('photos', IMAGES)
@@ -30,15 +30,12 @@ def upload_file():
     # first clear upload dir
     for f in glob.glob(app.config['UPLOADED_PHOTOS_DEST'] + '/*'):
         os.remove(f)
-        # will think about this later
-        # pass
 
     form = UploadForm()
     salvaged_text = None
     if form.validate_on_submit():
         filename = photos.save(form.photo.data)
         file_url = photos.url(filename)
-        # print(file_url)
         just_the_filename = file_url.split('/')[-1]
         salvaged_text = pytesseract.image_to_string(Image.open(os.path.join(app.config['UPLOADED_PHOTOS_DEST'], just_the_filename)))
         logging.debug(salvaged_text)
@@ -54,5 +51,6 @@ def upload_file():
 
 if __name__ == '__main__':
     app.run(
+        host='0.0.0.0',
         debug=True,
         )
